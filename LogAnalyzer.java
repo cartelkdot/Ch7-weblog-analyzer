@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.text.DateFormat;
 /**
  * Read web server data and analyse hourly access patterns.
  * 
@@ -26,6 +27,12 @@ public class LogAnalyzer
         reader = new LogfileReader();
         
         records = new ArrayList<LogEntry>();
+    }
+    public void readFile(String filename){
+        FileResource fr = new FileResource(filename);
+        for(String line: fr.lines()){
+            records.add(WebLogParser.parseEntry(line));
+        }
     }
 
     /**
