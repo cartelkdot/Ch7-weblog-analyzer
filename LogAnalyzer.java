@@ -81,16 +81,35 @@ public class LogAnalyzer
         }
         return busiestHour;
     }
+    public int BusiestTwoHour()
+    {
+        int busiestHour = 0;
+        int busiestHour2 = 0;
+        int numberofAccesses = 0;
+        for(int hour = 0; hour <= hourCounts.length; hour++) {
+          if( numberofAccesses < hourCounts[hour]) {
+              numberofAccesses =  hourCounts[hour];
+              busiestHour = hour;
+            }    
+        }
+        for(int hour = 0; hour < hourCounts.length; hour++) {
+            if(numberofAccesses < hourCounts[hour]) {
+                numberofAccesses = hourCounts[hour];
+                busiestHour2 = hour;
+            }
+        }
+        return busiestHour;
+    }
     public int quietestHour()
     {
-        int quitestHour = 0;
+        int quietestHour = 0;
         int numberofAccesses = hourCounts[0];
         for(int hour = 1; hour < hourCounts.length; hour++) {
             if(numberofAccesses > hourCounts[hour]){
-                numberofCCesses = hourCounts[hour];
+                numberofAccesses = hourCounts[hour];
                 quietestHour = hour;
             }
         }
-        return quitestHour;
+        return quietestHour;
     }
 }
