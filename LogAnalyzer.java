@@ -13,27 +13,21 @@ public class LogAnalyzer
     // Use a LogfileReader to access the data.
     private LogfileReader reader;
     // initializes the names of log files.
-    private ArrayList<LogEntry> records; 
 
     /**
      * Create an object to analyze hourly web accesses.
      */
-    public LogAnalyzer()
+    public LogAnalyzer(String fname)
     { 
         // Create the array object to hold the hourly
         // access counts.
         hourCounts = new int[24];
         // Create the reader to obtain the data.
-        reader = new LogfileReader();
+        reader = new LogfileReader(fname);
         
-        records = new ArrayList<LogEntry>();
+
     }
-    public void readFile(String filename){
-        FileResource fr = new FileResource(filename);
-        for(String line: fr.lines()){
-            records.add(WebLogParser.parseEntry(line));
-        }
-    }
+
 
     /**
      * Analyze the hourly access data from the log file.
